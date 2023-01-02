@@ -1,10 +1,9 @@
 import pygame
 from random import randint
 
-randint
 pygame.init()
 x = 30
-y = 200
+y = 250
 pos_x = 1500
 pos_y = 200
 posi_x = 1900
@@ -34,23 +33,23 @@ while janela_aberta:
             janela_aberta = False
 
     comandos = pygame.key.get_pressed()
-    if comandos[pygame.K_UP]:
+    if comandos[pygame.K_UP] and y >= 0:
         y -= velocidade
-    if comandos[pygame.K_DOWN]:
+    if comandos[pygame.K_DOWN] and y <= 520:
         y += velocidade
-    if comandos[pygame.K_LEFT]:
+    if comandos[pygame.K_LEFT] and x >= 10:
         x -= velocidade
-    if comandos[pygame.K_RIGHT]:
+    if comandos[pygame.K_RIGHT] and x <= 1110:
         x += velocidade
 
-    if (pos_x <= -300) and (posi_x <= -300) and (position_x >= 2300):
-        pos_x = 1500
-        posi_x = 1800
-        position_x = -10
+    if (pos_x <= -300) and (posi_x <= -300) and (position_x > 1300):
+        pos_x = randint(1400, 1500)
+        posi_x = randint(1300, 1800)
+        position_x = randint(-150, -10)
 
     pos_x -= velocidade_outros
     posi_x -= velocidade_outros +5
-    position_x += velocidade_outros -3
+    position_x += velocidade -5
 
     janela.blit(fundo,(0,0))
     janela.blit(gol, (x,y))
