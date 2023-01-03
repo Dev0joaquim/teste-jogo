@@ -1,32 +1,34 @@
-import pygame
-from random import randint
+import pygame           # importa o estilo jogo do puthon
+from random import randint  # importa o estilo aleatório
 
-pygame.init()
-x = 30
-y = 250
-pos_x = 1500
-pos_y = 200
-posi_x = 1900
-posi_y = 400
-position_x = -300
-position_y = 510
+pygame.init()           # para iniciar o python
+x = 30          # posição horizontal inicial do boneco, no caso, GOL
+y = 250         # posição vertical inicial do boneco, no caso, GOL
+pos_x = 1500            # posição horizontal inicial do boneco, no caso, AZUL
+pos_y = 200         # posição vertical inicial do boneco, no caso, AZUL
+posi_x = 1900           # posição horizontal inicial do boneco, no caso, LATAM
+posi_y = 400            # posição vertical inicial do boneco, no caso, LATAM
+position_x = -300           # posição horizontal inicial do boneco, no caso, AVIANCA
+position_y = 510            # posição vertical inicial do boneco, no caso, AVIANCA
 
-velocidade = 15
-velocidade_outros = 13
+velocidade = 35         # velocidade do boneco GOL
+velocidade_outros = 33          # velocidade dos outros bonecos
 
-fundo = pygame.image.load('ceu.png')
-gol = pygame.image.load('gol1.png')
-azul = pygame.image.load('azulpequeno.png')
-latam = pygame.image.load('latampequeno.png')
-avianca = pygame.image.load('avianca.png')
 
-janela = pygame.display.set_mode((1300, 600))
-pygame.display.set_caption("Criando um jogo com Python")
+fundo = pygame.image.load('ceu.png')            # imagem de fundo
+gol = pygame.image.load('gol1.png')         # imagem do boneco principal
+azul = pygame.image.load('azulpequeno.png')         # imagem de outro boneco
+latam = pygame.image.load('latampequeno.png')         # imagem de outro boneco
+avianca = pygame.image.load('avianca.png')         # imagem de outro boneco
+aireuropa = pygame.image.load('aireuropa.png')         # imagem de outro boneco
+
+janela = pygame.display.set_mode((1300, 600))           # define a largura x altura da janela do jogo
+pygame.display.set_caption("Criando um jogo com Python")            # acho que é o nome do jogo
 
 
 janela_aberta = True
 while janela_aberta:
-    pygame.time.delay(50)
+    pygame.time.delay(50)           # valor em milessegudos
 
     for event in pygame.event.get() :
         if event.type == pygame.QUIT:
@@ -44,8 +46,16 @@ while janela_aberta:
 
     if (pos_x <= -300) and (posi_x <= -300) and (position_x > 1300):
         pos_x = randint(1400, 1500)
-        posi_x = randint(1300, 1800)
-        position_x = randint(-150, -10)
+        posi_x = randint(1300, 1700)
+        position_x = randint(-30, -10)
+        pos_y = randint(0, 300)
+        posi_y = randint(300, 400)
+        position_y = randint(0, 560)
+
+        if position_y + 50 >= pos_y and position_y + 50 >= posi_y:
+            position_y + 50
+        if position_y - 50 <= pos_y and position_y - 50 <= posi_y:
+            position_y - 50
 
     pos_x -= velocidade_outros
     posi_x -= velocidade_outros +5
